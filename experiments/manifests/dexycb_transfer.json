@@ -1,0 +1,20 @@
+{
+  "subject": "20200709-subject-01",
+  "status": "partial_transfer_stalled",
+  "observed_local": "2026-11-23T22:34:18.660749-06:00",
+  "bytes": 6189284922,
+  "expected_bytes": 12412314463,
+  "percent": 49.86,
+  "partial_path": "data/raw/dexycb/archives/20200709-subject-01.tar.gz.part",
+  "resume_http_status": 206,
+  "resume_added_bytes": 65805882,
+  "resume_exit": 28,
+  "archive_sha256_complete": false,
+  "archive_gzip_crc_complete": false,
+  "calibration_bytes": 14464,
+  "available_complete_sequence_split": {
+    "development": 3,
+    "validation": 2,
+    "test": 2
+  }
+}

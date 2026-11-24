@@ -41,6 +41,7 @@ def obtain(root: Path, folder: str, file_id: str, size: int, offline: bool) -> P
             url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download&confirm=t"
             subprocess.run(
                 ["curl", "--fail", "--location", "--retry", "3", "--continue-at", "-",
+                 "--connect-timeout", "20", "--speed-limit", "16384", "--speed-time", "90",
                  "--output", str(partial), url],
                 check=True,
             )

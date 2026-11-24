@@ -2,9 +2,12 @@
 
 Evaluación local congelada, reporte preliminar, presentación y comparativo disponibles.
 El conjunto de trabajo de DexYCB contiene siete tomas completas y la calibración.
-El archivo completo de subject-01 permanece en transferencia reanudable. El límite
-de caudal es compartido. La prueba de cinco rangos simultáneos no aceleró significativamente
-la transferencia. No se descargaron otros sujetos.
+La transferencia completa de subject-01 se detuvo tras dos estancamientos. Se conservan
+6.189.284.922 de 12.412.314.463 bytes (49,86 %) en el archivo .part. La reanudación con
+HTTP 206 añadió 65.805.882 bytes y luego agotó el tiempo de espera de curl. Quedan pendientes
+SHA-256 y CRC del archivo completo, extracción y auditoría integral. La calibración y las siete
+tomas completas del prefijo conservan su verificación. La prueba de rangos paralelos no
+aceleró significativamente la descarga. [Registro](experiments/manifests/dexycb_transfer.json)
 
 ## Evidencia
 
