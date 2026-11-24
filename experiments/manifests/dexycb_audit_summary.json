@@ -1,0 +1,13 @@
+{
+  "subject": "20200709-subject-01",
+  "sequences": 100,
+  "views": 800,
+  "rgb_label_pairs": 58160,
+  "rgb_decoded": true,
+  "issues": 0,
+  "split_sequence_counts": {
+    "development": 66,
+    "validation": 20,
+    "test": 14
+  }
+}

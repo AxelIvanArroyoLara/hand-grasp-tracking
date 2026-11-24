@@ -5,16 +5,16 @@
   "resumed_from_bytes": 6189284922,
   "archives": {
     "calibration": {
-      "particular_archive": "data/raw/dexycb/archives/calibration.tar.gz",
       "bytes": 14464,
       "sha256": "1f6cb30cfe290833ac66edec919c3b9b3f3937af2ba7bb78f0700a5349edd645",
-      "gzip_crc_verified_after_extraction": true
+      "gzip_crc_verified_after_extraction": true,
+      "path": "data/raw/dexycb/archives/calibration.tar.gz"
     },
     "20200709-subject-01": {
-      "particular_archive": "data/raw/dexycb/archives/20200709-subject-01.tar.gz",
       "bytes": 12412314463,
       "sha256": "ce44e97a7567f7fb128b474ae33f327715314956a1c7b24cb08b08bc51cf4303",
-      "gzip_crc_verified_after_extraction": true
+      "gzip_crc_verified_after_extraction": true,
+      "path": "data/raw/dexycb/archives/20200709-subject-01.tar.gz"
     }
   }
 }

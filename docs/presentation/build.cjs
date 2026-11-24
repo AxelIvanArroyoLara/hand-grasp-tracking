@@ -288,11 +288,12 @@ function appendNotes(slide, ...lines) {
         ]);
         dataTable(slide, ['Métrica', 'Original', 'Propuesto', 'Cambio'], rows,
             0.74, 2.12, [1.64, 1.74, 1.74, 1.08], { size: 13.4, rowH: 0.64 });
-        text(slide, 'Agarres · métricas de eventos (%)', 7.30, 1.76, 5.15, 0.32,
-            { fontSize: 17, bold: true, color: C.teal });
         const eventMetrics = [['Precisión', 'precision'], ['Recall', 'recall'], ['F1', 'f1']];
         const measured = eventMetrics.filter(([, key]) => Number.isFinite(baseline[key]) && Number.isFinite(proposed[key]));
-        if (measured.length) {
+        const plotEvents = measured.some(([, key]) => baseline[key] > 0 || proposed[key] > 0);
+        text(slide, plotEvents ? 'Agarres · métricas de eventos (%)' : 'Agarres · conteo de eventos',
+            7.30, 1.76, 5.15, 0.32, { fontSize: 17, bold: true, color: C.teal });
+        if (plotEvents) {
             const dataSeries = (name, row) => ({ name, labels: measured.map(([label]) => label),
                 values: measured.map(([, key]) => 100 * row[key]) });
             slide.addChart(pptx.ChartType.bar, [
@@ -315,9 +316,10 @@ function appendNotes(slide, ...lines) {
                     7.30, 5.88 + i * 0.23, 5.20, 0.24, { fontSize: 12.5, color: C.muted });
             }
         } else {
-            dataTable(slide, ['Métrica', 'Original', 'Propuesto'],
-                eventMetrics.map(([label, key]) => [label, pct(baseline[key]), pct(proposed[key])]),
-                7.30, 2.15, [1.45, 1.8, 1.8], { rowH: 0.59 });
+            const counts = [['Verdaderos positivos', 'tp'], ['Falsos positivos', 'fp'], ['Falsos negativos', 'fn']];
+            dataTable(slide, ['Resultado', 'Original', 'Propuesto'],
+                counts.map(([label, key]) => [label, whole(baseline[key]), whole(proposed[key])]),
+                7.30, 2.15, [2.15, 1.42, 1.49], { size: 13.4, rowH: 0.59 });
         }
         text(slide, `F1 de agarre  ${pct(baseline.f1)} / ${pct(proposed.f1)}  (${valueDiff(baseline.f1, proposed.f1, 100)} pp)`,
             0.75, 5.64, 6.34, 0.34, { fontSize: 15.4, bold: true, color: C.teal });

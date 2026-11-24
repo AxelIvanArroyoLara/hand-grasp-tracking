@@ -1,13 +1,12 @@
 # Estado de ejecución
 
-Evaluación local congelada, reporte preliminar, presentación y comparativo disponibles.
-El conjunto de trabajo de DexYCB contiene siete tomas completas y la calibración.
-La transferencia completa de subject-01 se detuvo tras dos estancamientos. Se conservan
-6.189.284.922 de 12.412.314.463 bytes (49,86 %) en el archivo .part. La reanudación con
-HTTP 206 añadió 65.805.882 bytes y luego agotó el tiempo de espera de curl. Quedan pendientes
-SHA-256 y CRC del archivo completo, extracción y auditoría integral. La calibración y las siete
-tomas completas del prefijo conservan su verificación. La prueba de rangos paralelos no
-aceleró significativamente la descarga. [Registro](experiments/manifests/dexycb_transfer.json)
+Evaluación local congelada, prueba reservada ampliada, reporte preliminar, presentación
+y comparativo disponibles. DexYCB subject-01 y calibración se descargaron, extrajeron
+y verificaron mediante SHA-256 local y CRC GZIP. La auditoría decodificó 58.160 pares
+RGB/anotación en 100 tomas y 800 vistas sin incidencias. La partición completa contiene
+66 tomas de desarrollo, 20 de validación y 14 de prueba.
+[Transferencia](experiments/manifests/dexycb_transfer.json) ·
+[Auditoría de datos](experiments/manifests/dexycb_audit_summary.json)
 
 ## Evidencia
 
@@ -16,6 +15,11 @@ aceleró significativamente la descarga. [Registro](experiments/manifests/dexycb
 - Prueba congelada. Detección 97,81 % en ambos métodos, PCK 73,06 % frente a 64,24 %,
   temblor 3,45 frente a 2,30 px/cuadro² y F1 66,67 % frente a 0 %.
   Velocidad 97,92 FPS frente a 90,13 FPS en CPU. Resultados bajo `experiments/results/test`.
+- Prueba ampliada congelada en otras 12 tomas, 868 cuadros. Detección 88,31 % frente a
+  89,16 %, PCK 62,89 % frente a 60,78 %, temblor 2,65 frente a 1,97 px/cuadro²
+  y F1 de agarre de 0 % en ambos. Rendimiento en CPU 95,05 frente a 85,98 FPS.
+  Resultados en `experiments/results/test_subject01`. Las dos tomas originales
+  se excluyeron de esta ampliación.
 - Exploración de eventos. Reglas, umbral adaptativo, regresión logística, SVM y k-NN
   sin verdaderos positivos en las dos vistas de validación.
 - Comparativo MP4 de 74 cuadros a 30 FPS en una vista de prueba. El cuadro 13
@@ -30,12 +34,8 @@ aceleró significativamente la descarga. [Registro](experiments/manifests/dexycb
 
 ## Continuación
 
-La descarga se reanuda y valida desde el directorio del repositorio.
-
-```zsh
-.venv/bin/python -m scripts.download_dataset
-.venv/bin/python -m scripts.inspect_dataset --root data/raw/dexycb
-```
+El sujeto completo queda disponible en `data/raw/dexycb`. El protocolo de repetición
+de la auditoría y la prueba ampliada está en [Metodología](docs/methodology.md).
 
 Con los videos y anotaciones propios, compilar y reempaquetar con Tectonic y Node
 con `pptxgenjs`, `image-size` y LibreOffice disponibles.
