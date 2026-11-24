@@ -1,0 +1,5 @@
+seed: 20261202
+fps: 30
+pilot_sequences: 3
+validation_sequences: 0
+tolerance: 5

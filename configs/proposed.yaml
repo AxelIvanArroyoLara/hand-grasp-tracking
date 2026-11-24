@@ -1,0 +1,7 @@
+tracking:
+  illumination: clahe
+  roi: true
+  flow: true
+  smoothing: one_euro
+events:
+  mode: proposed

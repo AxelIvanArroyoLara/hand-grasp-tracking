@@ -1,0 +1,23 @@
+baseline: {}
+clahe: {illumination: clahe}
+gamma: {illumination: gamma}
+equalize: {illumination: equalize}
+gaussian: {enhancement: gaussian}
+bilateral: {enhancement: bilateral}
+unsharp: {enhancement: unsharp}
+roi: {roi: true}
+flow: {flow: true}
+kalman: {smoothing: kalman}
+ema: {smoothing: ema}
+one_euro: {smoothing: one_euro}
+completo: {illumination: clahe, roi: true, flow: true, smoothing: one_euro}
+sin_clahe: {roi: true, flow: true, smoothing: one_euro}
+sin_roi: {illumination: clahe, flow: true, smoothing: one_euro}
+sin_flujo: {illumination: clahe, roi: true, smoothing: one_euro}
+sin_filtro: {illumination: clahe, roi: true, flow: true}
+completo_rapido: {illumination: clahe, enhancement: unsharp, roi: true, flow: true, smoothing: one_euro, one_euro_min_cutoff: 4.0, one_euro_beta: 0.10}
+rapido_sin_clahe: {enhancement: unsharp, roi: true, flow: true, smoothing: one_euro, one_euro_min_cutoff: 4.0, one_euro_beta: 0.10}
+rapido_sin_nitidez: {illumination: clahe, roi: true, flow: true, smoothing: one_euro, one_euro_min_cutoff: 4.0, one_euro_beta: 0.10}
+rapido_sin_roi: {illumination: clahe, enhancement: unsharp, flow: true, smoothing: one_euro, one_euro_min_cutoff: 4.0, one_euro_beta: 0.10}
+rapido_sin_flujo: {illumination: clahe, enhancement: unsharp, roi: true, smoothing: one_euro, one_euro_min_cutoff: 4.0, one_euro_beta: 0.10}
+rapido_sin_filtro: {illumination: clahe, enhancement: unsharp, roi: true, flow: true}
