@@ -1,0 +1,29 @@
+{
+  "id": "test",
+  "status": "complete",
+  "context": {
+    "code_sha256": "4373fa0d49fc99c4dbfc77c614f7dc53b6feca2ad0f9b7bcf05f726fb2422f8b",
+    "model_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+    "versions": {
+      "mediapipe": "0.10.32",
+      "opencv-contrib-python": "4.12.0.88",
+      "numpy": "2.2.6"
+    },
+    "delegate": "CPU",
+    "fps": 30
+  },
+  "settings": {
+    "seed": 20261202,
+    "fps": 30,
+    "pilot_sequences": 3,
+    "validation_sequences": 0,
+    "tolerance": 5
+  },
+  "started_utc": "2026-11-24T00:19:57.451434+00:00",
+  "partition": "test",
+  "git": "2116d60bc04c792a5f808ddfc6042ab2531308de",
+  "cameras": [
+    "836212060125"
+  ],
+  "seconds": 3.543464499998663
+}

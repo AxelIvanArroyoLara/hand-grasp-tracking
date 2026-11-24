@@ -1,0 +1,13 @@
+{
+  "entries": 63,
+  "crc_valid": true,
+  "decoded_video_frames": 74,
+  "output_points_rows": 74,
+  "path_with_spaces": true,
+  "native_cpu": true,
+  "archive_model_policy": "obtenci\u00f3n oficial externa",
+  "required_outputs": [
+    "puntos.csv",
+    "eventos.csv"
+  ]
+}

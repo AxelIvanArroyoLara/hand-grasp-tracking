@@ -1,0 +1,121 @@
+{
+  "prefijo": true,
+  "tomas": [
+    {
+      "toma": "20200709_145132",
+      "camaras": {
+        "836212060125": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "839512060362": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "840412060917": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "841412060263": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "932122060857": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "932122060861": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "932122061900": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        },
+        "932122062010": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 71
+        }
+      },
+      "agarre_provisional": 25
+    },
+    {
+      "toma": "20200709_150654",
+      "camaras": {
+        "836212060125": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "839512060362": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "840412060917": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "841412060263": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "932122060857": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "932122060861": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "932122061900": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        },
+        "932122062010": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 67
+        }
+      },
+      "agarre_provisional": 45
+    },
+    {
+      "toma": "20200709_150906",
+      "camaras": {
+        "836212060125": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "839512060362": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "840412060917": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "841412060263": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "932122060857": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "932122060861": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "932122061900": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        },
+        "932122062010": {
+          "cuadros": 74,
+          "cuadros_con_juntas": 73
+        }
+      },
+      "agarre_provisional": 38
+    }
+  ],
+  "errores": [],
+  "rgb_decodificado": true
+}

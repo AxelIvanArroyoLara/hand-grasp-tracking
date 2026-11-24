@@ -1,0 +1,50 @@
+{
+  "context": {
+    "code_sha256": "4373fa0d49fc99c4dbfc77c614f7dc53b6feca2ad0f9b7bcf05f726fb2422f8b",
+    "model_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+    "versions": {
+      "mediapipe": "0.10.32",
+      "opencv-contrib-python": "4.12.0.88",
+      "numpy": "2.2.6"
+    },
+    "delegate": "CPU",
+    "fps": 30
+  },
+  "settings": {
+    "seed": 20261202,
+    "fps": 30,
+    "pilot_sequences": 3,
+    "validation_sequences": 0,
+    "tolerance": 5
+  },
+  "cameras": [
+    "836212060125"
+  ],
+  "test_sequences": [
+    "20200709_142211",
+    "20200709_142802",
+    "20200709_143047",
+    "20200709_144056",
+    "20200709_144202",
+    "20200709_144357",
+    "20200709_145959",
+    "20200709_150243",
+    "20200709_151502",
+    "20200709_151632",
+    "20200709_152506",
+    "20200709_152843"
+  ],
+  "tracking": {
+    "illumination": "clahe",
+    "roi": true,
+    "flow": true,
+    "smoothing": "one_euro"
+  },
+  "events": {},
+  "name": "completo",
+  "original_freeze_sha256": "5eaadf39b5dba8a7da8b3d9ae4e69635c8fa2076af7c1713c3ba7ce90050412d",
+  "original_test_sequences": [
+    "20200709_152056",
+    "20200709_153322"
+  ]
+}

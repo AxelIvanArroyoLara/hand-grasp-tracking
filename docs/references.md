@@ -1,0 +1,7 @@
+# Referencias y decisiones técnicas
+
+- Chao et al. (2021), *DexYCB*. Las cámaras sincronizadas permiten tomar decisiones de partición a nivel de secuencia. El lector sigue el toolkit oficial y separa RGB de anotaciones. [Proyecto](https://dex-ycb.github.io/) · [Toolkit](https://github.com/NVlabs/dex-ycb-toolkit)
+- Google AI Edge, *Hand Landmarker*. Se usa VIDEO para el flujo principal y CPU para ambos sistemas. [Guía oficial](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker/python) · [Rueda ARM64](https://pypi.org/project/mediapipe/0.10.32/)
+- Pu, Chong y Lim (2023), *Robustness Evaluation in Hand Pose Estimation Models using Metamorphic Testing*. Con desenfoque diagonal, MediaPipe Hands dejó de identificar al menos la mitad de las manos en el protocolo publicado. La oclusión y la exposición motivan evaluar recuperación y contraste. [Publicación](https://arxiv.org/abs/2303.04566)
+- Chiche et al. (2026), *Vision-Based Hand Shadowing for Robotic Manipulation via Inverse Kinematics*. Reportan 86,7 % de éxito en su prueba estructurada y 9,3 % en entornos no estructurados. La entrada RGB-D y la medida de éxito robótico hacen que sus porcentajes describan una tarea diferente a PCK o F1 en este proyecto. [Publicación](https://arxiv.org/abs/2603.11383v2)
+- Las fuentes primarias sobre CLAHE, flujo óptico, Kalman, One Euro y contacto mano-objeto se detallan en [seguimiento](research/tracking.md) y [eventos](research/events.md).

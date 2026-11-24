@@ -1,0 +1,13 @@
+{
+  "subject": "20200709-subject-01",
+  "seed": 20261202,
+  "rule": "sha256-first8-mod100-60/20/20",
+  "splits": {
+    "development": [],
+    "validation": [
+      "20200709_142446",
+      "20200709_145915"
+    ],
+    "test": []
+  }
+}
