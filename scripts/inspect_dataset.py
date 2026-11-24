@@ -7,8 +7,10 @@ import json
 from pathlib import Path
 import sys
 from tempfile import NamedTemporaryFile
+from zipfile import BadZipFile
 
 import numpy as np
+import yaml
 
 from src.datasets.dexycb import CAMERAS, DEFAULT_SEED, discover, grasp_onset, split_sequences
 
@@ -40,7 +42,7 @@ def audit(root: Path, seed: int, prefix: bool, decode_rgb: bool) -> tuple[dict, 
             try:
                 view.intrinsics()
                 view.extrinsics()
-            except (OSError, ValueError, KeyError, TypeError) as error:
+            except (OSError, ValueError, KeyError, TypeError, yaml.YAMLError) as error:
                 errors.append(f"{sequence.name}/{view.camera}: calibración: {error}")
             for frame in view.frames():
                 absent = [path for path in (frame.color, frame.annotation) if not path.is_file()]
@@ -56,12 +58,12 @@ def audit(root: Path, seed: int, prefix: bool, decode_rgb: bool) -> tuple[dict, 
                     if decode_rgb and frame.read_rgb().shape[:2] != labels.segmentation.shape:
                         raise ValueError("Dimensiones diferentes de RGB y máscara")
                     visible += bool(np.isfinite(labels.joints).all(axis=1).any())
-                except (OSError, ValueError, KeyError, TypeError) as error:
+                except (OSError, EOFError, ValueError, KeyError, TypeError, BadZipFile) as error:
                     errors.append(f"{frame.annotation.relative_to(root)}: {error}")
             cameras[view.camera] = {"cuadros": view.count, "cuadros_con_juntas": visible}
         try:
             onset = grasp_onset(sequence)
-        except (OSError, ValueError, KeyError) as error:
+        except (OSError, EOFError, ValueError, KeyError, BadZipFile) as error:
             errors.append(f"{sequence.name}: poses YCB: {error}")
             onset = None
         items.append({"toma": sequence.name, "camaras": cameras, "agarre_provisional": onset})

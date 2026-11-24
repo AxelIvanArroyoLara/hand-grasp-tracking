@@ -17,3 +17,11 @@ experiments/results/private/
 deliverables/
 docs/report/build/
 salida/
+experiments/results/**/checkpoint.json
+experiments/figures/*.jpg
+experiments/figures/falla_dexycb.json
+experiments/figures/errores.csv
+docs/report/figures/*.jpg
+
+experiments/results/official.json
+docs/presentation/autores.txt

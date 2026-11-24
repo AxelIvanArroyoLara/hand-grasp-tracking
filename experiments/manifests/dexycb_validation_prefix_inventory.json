@@ -1,0 +1,83 @@
+{
+  "prefijo": true,
+  "tomas": [
+    {
+      "toma": "20200709_142446",
+      "camaras": {
+        "836212060125": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "839512060362": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "840412060917": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "841412060263": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "932122060857": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "932122060861": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "932122061900": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        },
+        "932122062010": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 71
+        }
+      },
+      "agarre_provisional": 27
+    },
+    {
+      "toma": "20200709_145915",
+      "camaras": {
+        "836212060125": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "839512060362": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "840412060917": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "841412060263": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "932122060857": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "932122060861": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "932122061900": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        },
+        "932122062010": {
+          "cuadros": 72,
+          "cuadros_con_juntas": 65
+        }
+      },
+      "agarre_provisional": 41
+    }
+  ],
+  "errores": [],
+  "rgb_decodificado": true
+}

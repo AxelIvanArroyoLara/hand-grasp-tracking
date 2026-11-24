@@ -10,7 +10,6 @@ import cv2
 from src.contracts import EVENT_COLUMNS
 from src.events import Event
 from src.input import Frames
-from src.visualization import overlay
 
 CONDITIONS = ("buena_luz", "poca_luz", "movimiento_rapido")
 
@@ -66,8 +65,16 @@ def annotate(video, output):
                     if not ok:
                         raise ValueError(f"No se pudo leer el cuadro {index}")
                     previous = index
-                event = Event(index, marks[index]) if index in marks else None
-                screen = overlay(frame, None, index, f"Anotacion ({len(marks)}/10)", event)
+                screen = frame.copy()
+                count_grasps = sum(kind == "agarrar" for kind in marks.values())
+                count_releases = len(marks) - count_grasps
+                label = f"Cuadro {index}/{total - 1}  Agarres {count_grasps}/5  Sueltas {count_releases}/5"
+                if index in marks:
+                    label += f"  {marks[index].upper()}"
+                scale = min(0.85, max(0.35, screen.shape[1] / 1100))
+                cv2.rectangle(screen, (0, 0), (screen.shape[1], 34), (20, 20, 20), -1)
+                cv2.putText(screen, label, (7, 24), cv2.FONT_HERSHEY_SIMPLEX, scale, (247, 247, 247), 1,
+                            cv2.LINE_AA)
                 cv2.imshow(title, screen)
                 key = cv2.waitKey(max(1, round(1000 / frames.fps)) if playing else 0) & 0xff
                 if key in (27, ord("q")):

@@ -21,7 +21,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from threadpoolctl import threadpool_limits
 
-from scripts.run_experiments import context, identify_view, infer, save_json
+from scripts.run_experiments import EVENT_VARIANTS, context, identify_view, infer, save_json
 from src.contracts import MODEL, ROOT, load_mapping
 from src.datasets.dexycb import discover, grasp_onset, split_sequences
 from src.evaluation import EventMetrics
@@ -97,6 +97,8 @@ def samples(sequences, config, args, base, split, partition, limit):
     event_options = config["events"].copy()
     mode = event_options.pop("mode", "proposed")
     detector = {"primary": (mode, event_options)}
+    if args.reusar_busqueda and mode == "proposed":
+        detector.update({name: ("proposed", options) for name, options in EVENT_VARIANTS.items()})
     selected = split["splits"][partition]
     if limit:
         selected = selected[:limit]
@@ -135,7 +137,7 @@ def train_and_compare(development, validation, seed, tolerance):
     if np.unique(labels).size < 2 or len(features) < 5:
         raise ValueError("Desarrollo requiere rasgos válidos positivos y negativos para comparar.")
     candidates = (
-        ("regresion_logistica", LogisticRegression(class_weight="balanced", max_iter=500, random_state=seed),
+        ("regresion_logistica", LogisticRegression(class_weight="balanced", solver="liblinear", max_iter=500, random_state=seed),
          (0.35, 0.50, 0.65)),
         ("svm_rbf", SVC(C=1.0, class_weight="balanced"), (-0.25, 0.0, 0.25)),
         ("knn", KNeighborsClassifier(n_neighbors=5, weights="distance", n_jobs=1), (0.20, 0.35, 0.50)),
@@ -166,6 +168,8 @@ def train_and_compare(development, validation, seed, tolerance):
                 score = pipeline.decision_function(sample.features)
             else:
                 score = pipeline.predict_proba(sample.features)[:, 1]
+            if not np.isfinite(score).all():
+                raise ValueError(f"El candidato {name} produjo puntajes no finitos.")
             scores.append(score)
         scoring_seconds = perf_counter() - started
         for threshold in thresholds:
@@ -193,6 +197,8 @@ def main():
     parser.add_argument("--config", default=ROOT / "configs/proposed.yaml", type=Path)
     parser.add_argument("--cache", default=ROOT / "experiments/cache", type=Path)
     parser.add_argument("--camara", action="append", default=[])
+    parser.add_argument("--reusar-busqueda", action="store_true",
+                        help="usa las entradas de caché generadas por --tune-events")
     parser.add_argument("--limite-desarrollo", type=int, default=8)
     parser.add_argument("--limite-validacion", type=int, default=5)
     args = parser.parse_args()
@@ -223,6 +229,10 @@ def main():
         "validation": [[s.sequence, s.camera] for s in validation],
         "sequences_without_onset": {"development": missing_dev, "validation": missing_val},
         "training_label_counts": label_counts,
+        "validation_views": [
+            {"sequence": sample.sequence, "camera": sample.camera, "frames_with_features": len(sample.features)}
+            for sample in validation
+        ],
         "tested_event_types": ["agarrar"],
         "seconds": perf_counter() - started,
         "results": rows,

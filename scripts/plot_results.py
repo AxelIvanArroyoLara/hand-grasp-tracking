@@ -80,6 +80,26 @@ def trajectory(comparison, output):
     plt.close(fig)
 
 
+def errors(source, output):
+    """Grafica error de puntos y PCK de la vista, incluidos cuadros sin pose."""
+    import csv
+    with source.open() as stream:
+        rows = list(csv.DictReader(stream))
+    index = [int(row["cuadro"]) for row in rows]
+    figure, axes = plt.subplots(2, 1, figsize=(7.6, 3.8), sharex=True)
+    for axis, key, title, scale in zip(axes, ("mediana_px", "pck_10"),
+                                      ("Error mediano (px)", "PCK@10 px (%)"), (1, 100), strict=True):
+        values = [float(row[key]) * scale if row[key] else np.nan for row in rows]
+        axis.plot(index, values, color=TEAL)
+        axis.set_ylabel(title)
+        axis.grid(alpha=.25)
+    axes[0].axhline(10, color=ORANGE, linestyle="--", linewidth=1)
+    axes[-1].set_xlabel("Cuadro")
+    figure.tight_layout()
+    figure.savefig(output / "errores.png", dpi=175, bbox_inches="tight")
+    plt.close(figure)
+
+
 def main():
     """Crea las figuras auditables de una ejecución completa."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -88,6 +108,8 @@ def main():
     parser.add_argument("--comparativo", type=Path)
     args = parser.parse_args()
     plot(args.resultados, args.salida)
+    if (args.salida / "errores.csv").is_file():
+        errors(args.salida / "errores.csv", args.salida)
     if args.comparativo:
         trajectory(args.comparativo, args.salida)
 

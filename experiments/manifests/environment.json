@@ -1,0 +1,30 @@
+{
+  "architecture": "arm64",
+  "system": "Darwin",
+  "macos": "26.7.1",
+  "python": "3.12.14",
+  "python_system": "Python 3.9.6",
+  "model": "Mac17,3",
+  "cpu_count": 10,
+  "memory_bytes": 17179869184,
+  "disk_free_bytes": 715782602752,
+  "tools": {
+    "python3": true,
+    "uv": false,
+    "conda": false,
+    "brew": true,
+    "git": true,
+    "gh": false,
+    "ffmpeg": false,
+    "tectonic": true,
+    "pdflatex": false,
+    "soffice": true
+  },
+  "versions": {
+    "mediapipe": "0.10.32",
+    "opencv-contrib-python": "4.12.0.88",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1"
+  }
+}

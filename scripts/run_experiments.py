@@ -212,7 +212,7 @@ def save_csv(path, rows):
               "jitter_px", "reference_jitter_px", "residual_jitter_px", "precision", "recall", "f1",
               "mae_frames", "tp", "fp", "fn", "seconds", "fps", "mean_latency_ms", "memory_peak_bytes")
     with path.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

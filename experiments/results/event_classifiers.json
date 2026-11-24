@@ -1,0 +1,467 @@
+{
+  "created_utc": "2026-11-24T00:21:13.049228+00:00",
+  "context": {
+    "code_sha256": "4373fa0d49fc99c4dbfc77c614f7dc53b6feca2ad0f9b7bcf05f726fb2422f8b",
+    "model_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+    "versions": {
+      "mediapipe": "0.10.32",
+      "opencv-contrib-python": "4.12.0.88",
+      "numpy": "2.2.6"
+    },
+    "delegate": "CPU",
+    "fps": 30
+  },
+  "script_sha256": "e29b820006d4c87529c93d344c3fb5cba514683d67a16d4bf44f5a24b01d1e83",
+  "git": "2116d60bc04c792a5f808ddfc6042ab2531308de",
+  "scikit_learn_version": "1.6.1",
+  "settings": {
+    "seed": 20261202,
+    "fps": 30,
+    "pilot_sequences": 3,
+    "validation_sequences": 0,
+    "tolerance": 5
+  },
+  "config": {
+    "tracking": {
+      "illumination": "clahe",
+      "roi": true,
+      "flow": true,
+      "smoothing": "one_euro"
+    },
+    "events": {
+      "mode": "proposed"
+    }
+  },
+  "development": [
+    [
+      "20200709_145132",
+      "836212060125"
+    ],
+    [
+      "20200709_150654",
+      "836212060125"
+    ],
+    [
+      "20200709_150906",
+      "836212060125"
+    ]
+  ],
+  "validation": [
+    [
+      "20200709_142446",
+      "836212060125"
+    ],
+    [
+      "20200709_145915",
+      "836212060125"
+    ]
+  ],
+  "sequences_without_onset": {
+    "development": 0,
+    "validation": 0
+  },
+  "training_label_counts": {
+    "positive": 15,
+    "negative": 177
+  },
+  "validation_views": [
+    {
+      "sequence": "20200709_142446",
+      "camera": "836212060125",
+      "frames_with_features": 0
+    },
+    {
+      "sequence": "20200709_145915",
+      "camera": "836212060125",
+      "frames_with_features": 61
+    }
+  ],
+  "tested_event_types": [
+    "agarrar"
+  ],
+  "seconds": 0.5119840000006661,
+  "results": [
+    {
+      "model": "reglas",
+      "threshold": null,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "umbral_adaptativo",
+      "threshold": 0.025,
+      "tp": 0,
+      "fp": 3,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "umbral_adaptativo",
+      "threshold": 0.05,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "umbral_adaptativo",
+      "threshold": 0.1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "regresion_logistica",
+      "threshold": 0.35,
+      "fit_seconds": 0.0018579160005174344,
+      "scoring_seconds": 0.0003181249994668178,
+      "tp": 0,
+      "fp": 3,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "regresion_logistica",
+      "threshold": 0.5,
+      "fit_seconds": 0.0018579160005174344,
+      "scoring_seconds": 0.0003181249994668178,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "regresion_logistica",
+      "threshold": 0.65,
+      "fit_seconds": 0.0018579160005174344,
+      "scoring_seconds": 0.0003181249994668178,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "svm_rbf",
+      "threshold": -0.25,
+      "fit_seconds": 0.0010167500004172325,
+      "scoring_seconds": 0.00030345799859787803,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "svm_rbf",
+      "threshold": 0.0,
+      "fit_seconds": 0.0010167500004172325,
+      "scoring_seconds": 0.00030345799859787803,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "svm_rbf",
+      "threshold": 0.25,
+      "fit_seconds": 0.0010167500004172325,
+      "scoring_seconds": 0.00030345799859787803,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "knn",
+      "threshold": 0.2,
+      "fit_seconds": 0.0009861669987003552,
+      "scoring_seconds": 0.0008069590003287885,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "knn",
+      "threshold": 0.35,
+      "fit_seconds": 0.0009861669987003552,
+      "scoring_seconds": 0.0008069590003287885,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    },
+    {
+      "model": "knn",
+      "threshold": 0.5,
+      "fit_seconds": 0.0009861669987003552,
+      "scoring_seconds": 0.0008069590003287885,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "mae_frames": null,
+      "bias_frames": null,
+      "absolute_error_sum": 0,
+      "signed_error_sum": 0,
+      "by_kind": {
+        "agarrar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mae_frames": null,
+          "bias_frames": null,
+          "absolute_error_sum": 0,
+          "signed_error_sum": 0
+        }
+      }
+    }
+  ]
+}
