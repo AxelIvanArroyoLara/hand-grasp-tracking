@@ -52,7 +52,7 @@ function experiment(partition) {
 
 const development = experiment('development');
 const validation = experiment('validation');
-const test = experiment('test');
+const test = experiment('test_subject01') || experiment('test');
 const track = test || validation || development;
 const ablation = validation || development;
 const frozen = json(path.join(results, 'validation', 'frozen.json'));
@@ -65,6 +65,7 @@ const labels = {
     development: 'Piloto de desarrollo',
     validation: 'Validación',
     test: 'Prueba local reservada',
+    test_subject01: 'Prueba reservada ampliada de subject-01',
 };
 const format = new Intl.NumberFormat('es-MX', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const integer = new Intl.NumberFormat('es-MX', { maximumFractionDigits: 0 });

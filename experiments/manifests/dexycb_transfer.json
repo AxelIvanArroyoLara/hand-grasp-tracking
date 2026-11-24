@@ -1,20 +1,20 @@
 {
   "subject": "20200709-subject-01",
-  "status": "partial_transfer_stalled",
-  "observed_local": "2026-11-23T22:34:18.660749-06:00",
-  "bytes": 6189284922,
-  "expected_bytes": 12412314463,
-  "percent": 49.86,
-  "partial_path": "data/raw/dexycb/archives/20200709-subject-01.tar.gz.part",
-  "resume_http_status": 206,
-  "resume_added_bytes": 65805882,
-  "resume_exit": 28,
-  "archive_sha256_complete": false,
-  "archive_gzip_crc_complete": false,
-  "calibration_bytes": 14464,
-  "available_complete_sequence_split": {
-    "development": 3,
-    "validation": 2,
-    "test": 2
+  "status": "complete_extracted",
+  "verified_local": "2026-11-23T22:54:02.531350-06:00",
+  "resumed_from_bytes": 6189284922,
+  "archives": {
+    "calibration": {
+      "particular_archive": "data/raw/dexycb/archives/calibration.tar.gz",
+      "bytes": 14464,
+      "sha256": "1f6cb30cfe290833ac66edec919c3b9b3f3937af2ba7bb78f0700a5349edd645",
+      "gzip_crc_verified_after_extraction": true
+    },
+    "20200709-subject-01": {
+      "particular_archive": "data/raw/dexycb/archives/20200709-subject-01.tar.gz",
+      "bytes": 12412314463,
+      "sha256": "ce44e97a7567f7fb128b474ae33f327715314956a1c7b24cb08b08bc51cf4303",
+      "gzip_crc_verified_after_extraction": true
+    }
   }
 }

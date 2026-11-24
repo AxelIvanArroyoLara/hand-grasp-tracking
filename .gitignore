@@ -25,3 +25,5 @@ docs/report/figures/*.jpg
 
 experiments/results/official.json
 docs/presentation/autores.txt
+
+experiments/manifests/dexycb_inventory.json

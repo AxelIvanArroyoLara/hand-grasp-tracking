@@ -81,8 +81,14 @@ def generate(results, output, custom=None):
     status = f"Versión preliminar con pendientes de {', '.join(missing)}." if missing else ""
     (output / "estado.tex").write_text(status + "\n", encoding="utf-8")
     test, val, dev = [load(results / name) for name in ("test", "validation", "development")]
-    main = test or val or dev
-    scope = "prueba local reservada" if test else ("validación" if val else "desarrollo")
+    extended_test = load(results / "test_subject01")
+    main = extended_test or test or val or dev
+    if extended_test:
+        scope = "la prueba reservada ampliada de subject-01"
+    elif test:
+        scope = "la prueba local reservada"
+    else:
+        scope = "validación" if val else "desarrollo"
     if main:
         baseline = next(row for row in main if row["name"] == "baseline")
         frozen = results / "validation/frozen.json"
@@ -113,6 +119,10 @@ def generate(results, output, custom=None):
     else:
         summary = "La evaluación cuantitativa permanece pendiente."
         main_text = "Los experimentos cuantitativos permanecen pendientes de registro."
+    if extended_test and test:
+        main_text += ("\nLa ampliación conserva la misma cámara y configuración congelada. "
+                      f"Las {test[0]['sequences']} tomas de la prueba original se excluyeron de "
+                      "la ampliación y se conservan en el análisis de casos.")
     comparison = val or dev
     if comparison:
         included = [row for row in comparison if not row["name"].startswith("rapido_sin_")]

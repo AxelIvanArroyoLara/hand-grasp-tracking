@@ -62,11 +62,11 @@ def gather(root, deliverables):
             continue
         read_events(indispensable[0], require_five=True)
         files.extend((p, f"videos_propios/{condition}/{p.name}") for p in [*clips, *indispensable])
-    for name in ("environment.json", "dexycb_transfer.json", "requirements-macos-arm64-py312.txt"):
+    for name in ("environment.json", "dexycb_transfer.json", "dexycb_audit_summary.json", "requirements-macos-arm64-py312.txt"):
         evidence = root / "experiments/manifests" / name
         if evidence.is_file():
             files.append((evidence, f"evidencia/{name}"))
-    for stage in ("development", "validation", "test"):
+    for stage in ("development", "validation", "test", "test_subject01"):
         record = root / "experiments/results" / stage
         manifest = record / "manifest.json"
         if manifest.is_file() and json.loads(manifest.read_text()).get("status") == "complete":
