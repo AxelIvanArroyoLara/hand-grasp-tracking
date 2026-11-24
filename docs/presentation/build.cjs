@@ -60,6 +60,7 @@ const baseline = track?.rows.find(row => row.name === 'baseline');
 const proposed = track?.rows.find(row => row.name === (test ? 'seleccionado' : frozen?.name || 'completo'))
     || track?.rows.find(row => row.name === 'completo');
 const custom = json(path.join(output, 'videos_propios', 'custom_results.json'));
+const official = json(path.join(results, 'official.json'));
 const labels = {
     development: 'Piloto de desarrollo',
     validation: 'Validación',
@@ -203,7 +204,7 @@ function appendNotes(slide, ...lines) {
     if (coverImage) photo(slide, coverImage, 7.43, 1.23, 5.16, 4.52);
     const people = authors.length ? authors.join(' · ') : '[Integrante 1] · [Integrante 2] · [Integrante 3]';
     text(slide, people, 0.75, 6.03, 11.85, 0.27, { color: C.white, fontSize: 14 });
-    const status = custom?.micro && test ? 'Evaluación provisional' : 'Entrega preliminar';
+    const status = custom?.micro && test && authors.length === 3 && official?.metrics ? 'Evaluación técnica' : 'Entrega preliminar';
     foot(slide, `2 de diciembre de 2026 · ${status}`, true);
     appendNotes(slide, 'Integrante 1. Presentar el problema de convertir una grabación RGB en una secuencia geométrica y marcas temporales.',
         coverImage ? `Imagen RGB de DexYCB, sujeto 01, ${example.sequence}, cámara ${example.camera}, cuadro ${coverFrame}. https://dex-ycb.github.io/` : 'Fuente de datos: https://dex-ycb.github.io/');

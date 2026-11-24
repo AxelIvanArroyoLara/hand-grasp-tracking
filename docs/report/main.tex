@@ -8,13 +8,13 @@
 \title{Del video de celular a la demostración para robot\\
 Seguimiento de manos y detección de eventos de manipulación}
 \author{
-\IEEEauthorblockN{[Integrante 1], [Integrante 2], [Integrante 3]}
+\IEEEauthorblockN{\input{build/autores.tex}}
 \IEEEauthorblockA{Proyecto final de Visión Artificial}
 }
 \begin{document}
 \maketitle
 \begin{abstract}
-El seguimiento de manos en video RGB permite describir una demostración de manipulación mediante puntos articulares y eventos discretos. Se implementó un sistema para CPU que combina Hand Landmarker, preprocesamiento adaptativo, recuperación espacial y temporal, filtrado causal y una máquina de estados para detectar agarres y sueltas. El protocolo separa las tomas por secuencia, evalúa pose en píxeles y empareja eventos dentro de cinco cuadros. \input{build/resumen.tex} Las sueltas de DexYCB quedan fuera del protocolo. La evaluación con grabaciones propias y el evaluador de la asignatura determina el alcance de esta versión preliminar.
+El seguimiento de manos en video RGB permite describir una demostración de manipulación mediante puntos articulares y eventos discretos. Se implementó un sistema para CPU que combina Hand Landmarker, preprocesamiento adaptativo, recuperación espacial y temporal, filtrado causal y una máquina de estados para detectar agarres y sueltas. El protocolo separa las tomas por secuencia, evalúa pose en píxeles y empareja eventos dentro de cinco cuadros. \input{build/resumen.tex} Las sueltas de DexYCB quedan fuera del protocolo. \input{build/estado.tex}
 \end{abstract}
 \begin{IEEEkeywords}
 estimación de pose, seguimiento de manos, flujo óptico, agarre, video RGB
@@ -122,7 +122,7 @@ El filtro modifica posiciones en función de observaciones anteriores. El error 
 \section{Discusión y conclusiones}
 La salida en formato CSV conserva la cronología y una representación explícita de cuadros perdidos. La comparación utiliza el mismo modelo en ambos sistemas, con trazabilidad de las opciones añadidas. Las recuperaciones y el filtro modifican aspectos diferentes: cobertura en intervalos difíciles, continuidad de las trayectorias y precisión de puntos en movimiento. Analizar los tres ejes evita elegir un método basado únicamente en estabilidad.
 
-El resultado de los eventos depende de la etiqueta aproximada de DexYCB y de la evidencia visible en una única cámara. Con pocos agarres, un acierto cambia sustancialmente F1. Los eventos propios permitirán comprobar si la lógica de suelta funciona y si el costo temporal de la confirmación es razonable. La versión preliminar entrega un flujo reproducible en CPU y conserva las variantes que permiten inspeccionar la contribución de cada técnica.
+El resultado de los eventos depende de la etiqueta aproximada de DexYCB y de la evidencia visible en una única cámara. Con pocos agarres, un acierto cambia sustancialmente F1. Las grabaciones propias evalúan la lógica de suelta y el costo temporal de la confirmación. El flujo en CPU y sus variantes permiten inspeccionar la contribución de cada técnica.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

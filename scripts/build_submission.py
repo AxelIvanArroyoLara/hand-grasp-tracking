@@ -8,6 +8,7 @@ from tempfile import TemporaryDirectory
 from zipfile import BadZipFile, ZIP_DEFLATED, ZipFile
 
 from scripts.annotate_videos import CONDITIONS, read_events
+from scripts.report_metrics import read_authors
 from src.contracts import ROOT
 
 ARTIFACTS = ("reporte_IEEE.pdf", "presentacion.pptx", "presentacion.pdf", "video_comparativo.mp4")
@@ -93,8 +94,7 @@ def gather(root, deliverables):
             pending.append("resultados oficiales con huellas válidas")
     else:
         pending.append("resultados del evaluador oficial")
-    report = root / "docs/report/main.tex"
-    if "[Integrante" in report.read_text(encoding="utf-8"):
+    if not read_authors(root / "docs/presentation/autores.txt"):
         pending.append("nombres del equipo en el reporte")
     return files, pending
 

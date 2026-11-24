@@ -60,7 +60,7 @@ python -m scripts.annotate_videos data/raw/custom_videos/buena_luz.mp4 data/anno
 
 Repite para poca luz y movimiento rápido. Espacio reproduce, A/D retrocede o avanza, G marca agarre, L marca
 suelta, X borra, S guarda y Q sale. La opción `--validar` valida los diez eventos.
-Después ejecuta `python -m scripts.finalize` con Tectonic, LibreOffice y Node con `pptxgenjs` disponibles.
+Escribe los tres nombres del equipo, uno por línea, en `docs/presentation/autores.txt`. El archivo se aplica al informe y a la portada. Después ejecuta `python -m scripts.finalize` con Tectonic, LibreOffice y Node con `pptxgenjs` disponibles.
 Se actualizan métricas, videos, informe, presentación y ZIP preliminar. La opción `--definitivo`
 comprueba todos los archivos obligatorios antes de emitir el paquete oficial.
 

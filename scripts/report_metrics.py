@@ -42,9 +42,44 @@ def load(folder):
     return []
 
 
+def read_authors(path):
+    """Obtiene tres nombres para el informe y la portada de la presentación."""
+    if not path.is_file():
+        return []
+    names = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if len(names) != 3 or any(name.startswith("[Integrante") for name in names):
+        raise ValueError("autores.txt debe contener tres nombres de integrantes")
+    return names
+
+
+def escape_tex(value):
+    """Representa nombres humanos como texto literal en LaTeX."""
+    specials = {
+        "\\": r"\textbackslash{}", "{": r"\{", "}": r"\}", "$": r"\$",
+        "&": r"\&", "#": r"\#", "%": r"\%", "_": r"\_",
+        "~": r"\textasciitilde{}", "^": r"\textasciicircum{}",
+    }
+    return "".join(specials.get(char, char) for char in value)
+
+
 def generate(results, output, custom=None):
     """Genera fragmentos para el resumen, resultados y ablación a partir de JSON."""
     output.mkdir(parents=True, exist_ok=True)
+    authors = read_authors(ROOT / "docs/presentation/autores.txt")
+    display = authors or [f"[Integrante {index}]" for index in range(1, 4)]
+    (output / "autores.tex").write_text(", ".join(map(escape_tex, display)) + "\n", encoding="utf-8")
+    official = results / "official.json"
+    official_ready = official.is_file() and bool(json.loads(official.read_text()).get("metrics"))
+    own_ready = bool(custom and custom.is_file())
+    missing = []
+    if not own_ready:
+        missing.append("grabaciones propias")
+    if not official_ready:
+        missing.append("evaluación de la asignatura")
+    if not authors:
+        missing.append("autoría")
+    status = f"Versión preliminar con pendientes de {', '.join(missing)}." if missing else ""
+    (output / "estado.tex").write_text(status + "\n", encoding="utf-8")
     test, val, dev = [load(results / name) for name in ("test", "validation", "development")]
     main = test or val or dev
     scope = "prueba local reservada" if test else ("validación" if val else "desarrollo")
@@ -138,12 +173,14 @@ def generate(results, output, custom=None):
                         "mediana entre los fallos con pose adjudicados al baseline. "
                         "El contraste en este cuadro es un diagnóstico, mientras que el "
                         "PCK agregado incluye la secuencia completa y los cuadros perdidos.")
-    if custom and custom.is_file():
+    if own_ready:
         data = json.loads(custom.read_text())["micro"]
         main_text += (f"\nLas grabaciones propias obtuvieron F1 micro de {value(data['baseline']['f1'], True)}"
                       f"\\,\\% en el detector sencillo y {value(data['proposed']['f1'], True)}\\,\\% en el propuesto.")
     else:
         main_text += "\nLa evaluación de agarres y sueltas en grabaciones propias sigue pendiente."
+    if official_ready:
+        main_text += "\nEl registro oficial acompaña a la evaluación local con su huella de procedencia."
     for filename, contents in {"resumen": summary, "resultados": main_text, "ablacion": ablation, "casos": failure}.items():
         (output / f"{filename}.tex").write_text(contents + "\n", encoding="utf-8")
 
