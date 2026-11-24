@@ -9,3 +9,21 @@
 - Coste. Tiempo desde decodificación JPEG hasta actualización de eventos, excluye lectura de anotaciones y gráficos. El piloto de búsqueda ejecuta varios detectores en paralelo lógico por cuadro, de forma secuencial en un proceso. Para estimar la velocidad de despliegue se usa la comparación de prueba con un detector por sistema.
 - Congelación. El manifiesto registra métodos, cámaras, tomas y hash de la implementación y el modelo. La prueba solo admite las opciones del manifiesto congelado.
 - Integración oficial. Mantener los CSV del contrato. La importación de métricas JSON y huellas del evaluador está disponible en `scripts.import_official`. La versión oficial deberá inspeccionarse al recibirla.
+
+## Verificación ampliada de subject-01
+
+Cuando esté disponible el sujeto completo, se aplica exactamente la configuración
+de la primera prueba a todas las tomas restantes de la partición reservada, en la
+misma cámara 836212060125. Se excluyen las dos tomas que ya tienen resultados
+publicados. La ampliación se congela a partir de los identificadores y metadatos
+de secuencia antes de cargar las anotaciones de esas tomas.
+
+```zsh
+python -m scripts.freeze_subject01
+python -m scripts.run_experiments --datos data/raw/dexycb --particion test --salida experiments/results/test_subject01 --congelado experiments/results/test_subject01/frozen.json
+python -m scripts.inspect_dataset --root data/raw/dexycb --decode-rgb
+```
+
+Los resultados ampliados miden generalización entre tomas del mismo sujeto en una
+vista fija. El cambio de tamaño de muestra no modifica el rastreador ni el detector
+de eventos. El análisis visual original conserva su evidencia independiente.
